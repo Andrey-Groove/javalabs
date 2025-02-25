@@ -53,4 +53,20 @@ public class Container {
         intnum[size - 1] = 0; // не обязательно
         size--;
     }
+    // найденый в интернете метод для "строкового представления объекта"
+    // без него массив полностью не выводится
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+
+        for (int i = 0; i <size; i++) {
+            sb.append(intnum[i]);
+         if (i < size - 1) {
+             sb.append(", ");
+         }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
