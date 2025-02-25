@@ -30,11 +30,27 @@ public class Container {
         intnum[size] = element;
         size++;
     }
+    private void errorCheck(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Индекс: " + index + "находится вне заданного диапазона: " + size);
+        }
+    }
 
     public int get (int index) {
-        if (index < 0 || index >= size){
-            throw new IndexOutOfBoundsException("Индекс: " + index + "находится вне заданного диапазона: " + size)
+        errorCheck(index);
+        return intnum[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void remove(int index) {
+        errorCheck(index);
+        for (int i = index; i < size - 1; i++) {
+            intnum[i] = intnum[i+1];
         }
-        return data[index];
+        intnum[size - 1] = 0; // не обязательно
+        size--;
     }
 }
